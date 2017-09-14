@@ -18,13 +18,13 @@ public class Runner {
         System.out.println(writer.toStringXMLRepresentation(catalogXMLBuilder.getDocument()));
 
         writer.extructXMLToFile(catalogXMLBuilder.getDocument(),
-                "C:\\Users\\Maksym_Moroz1\\Desktop\\text.txt");
+                "C:\\Users\\Maksym_Moroz1\\Desktop\\XML_Sourse.xml");
 
-        PersonParser personParser = new PersonParser("C:\\Users\\Maksym_Moroz1\\Desktop\\text.txt");
+        PersonParser personParser = new PersonParser("C:\\Users\\Maksym_Moroz1\\Desktop\\XML_Sourse.xml");
         Collection<Person> persons = personParser.getRangedPersons(10000);
 
         writer.extructPersonsCollectionToFile(persons,
-                "C:\\Users\\Maksym_Moroz1\\Desktop\\text1.txt");
+                "C:\\Users\\Maksym_Moroz1\\Desktop\\result.txt");
         String rangedPersons = writer.toStringPersonsCollection(persons);
         System.out.println(rangedPersons);
 
