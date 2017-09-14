@@ -7,11 +7,13 @@ public class Person {
     private String name;
     private String address;
     private Integer cash;
+    private String education;
 
-    public Person(String name, String address, Integer cash) {
+    public Person(String name, String address, Integer cash, String education) {
         this.name = name;
         this.address = address;
         this.cash = cash;
+        this.education = education;
     }
 
     public String getName() {
@@ -24,5 +26,9 @@ public class Person {
 
     public Integer getCash() {
         return cash;
+    }
+
+    public String getEducation() {
+        return education;
     }
 }

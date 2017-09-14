@@ -26,9 +26,7 @@ public class CatalogXMLBuilder {
         DocumentBuilder documentBuilder = null;
         try {
             documentBuilder = documentBuilderFactory.newDocumentBuilder();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        }
+        } catch (ParserConfigurationException e) {/* Nothing */  }
         doc = documentBuilder.newDocument();
         Element rootElement = doc.createElement("catalog");
         doc.appendChild(rootElement);
@@ -60,7 +58,7 @@ public class CatalogXMLBuilder {
         person.appendChild(educationChild);
     }
 
-    public String toStringXMLRepresentation() {
+    /*public String toStringXMLRepresentation() {
         TransformerFactory transfac = TransformerFactory.newInstance();
         Transformer trans = null;
         try {
@@ -83,20 +81,16 @@ public class CatalogXMLBuilder {
         }
         String xmlString = sw.toString();
         return xmlString;
-    }
+    } */
 
-    public boolean extructToFile(String path) {
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = null;
+    public Document getDocument() {
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder documentBuilder = null;
         try {
-            transformer = transformerFactory.newTransformer();
-        } catch (TransformerConfigurationException e) { return false; }
-
-        DOMSource source = new DOMSource(doc);
-        StreamResult result = new StreamResult(new File(path));
-        try {
-            transformer.transform(source, result);
-        } catch (TransformerException e) { return false; }
-        return true;
+            documentBuilder = documentBuilderFactory.newDocumentBuilder();
+        } catch (ParserConfigurationException e) {/* Nothing */  }
+        Document cloneDoc = documentBuilder.newDocument();
+        cloneDoc.appendChild(cloneDoc.importNode(this.doc.getDocumentElement(), true));
+        return cloneDoc;
     }
 }

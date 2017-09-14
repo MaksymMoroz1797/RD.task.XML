@@ -13,7 +13,6 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
-import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
@@ -27,7 +26,7 @@ public class PersonParser {
         this.path = path;
     }
 
-    public Collection<Person> getRangedXML(double cashMin) {
+    public Collection<Person> getRangedPersons(double cashMin) {
         File fileXML = new File(this.path);
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = null;
@@ -57,7 +56,11 @@ public class PersonParser {
                     getElementsByTagName("cash")
                     .item(0)
                     .getTextContent();
-            Person person = new Person(nameTemp, addessTemp, Integer.parseInt(cashTemp));
+            String educationTemp = personElement.
+                    getElementsByTagName("education")
+                    .item(0)
+                    .getTextContent();
+            Person person = new Person(nameTemp, addessTemp, Integer.parseInt(cashTemp), educationTemp);
             personList.add(person);
         }
         Collection<Person> resoltCollection = personList.stream()
