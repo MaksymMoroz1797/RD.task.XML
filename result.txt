@@ -1,0 +1,15 @@
+Name:      Vasya2
+Address:   Bagdad
+Cash:      10000
+Education: Hight
+
+Name:      Vasya3
+Address:   Tripoly
+Cash:      101100
+Education: Hight
+
+Name:      Vasya5
+Address:   Cairo
+Cash:      21100
+Education: Hight
+
